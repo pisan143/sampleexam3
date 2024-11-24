@@ -1,3 +1,11 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Exam3 {
 
@@ -133,6 +141,91 @@ public class Exam3 {
             }
         }
         return maxV;
+    }
+
+    public int numUniqueSet(int[] arr) {
+        Set<Integer> seen = new HashSet<Integer>();
+        for (int val : arr) {
+            seen.add(val);
+        }
+        return seen.size();
+    }
+
+    public int numUniqueSort(ArrayList<Integer> arr) {
+        if (arr.size() == 0) {
+            return 0;
+        }
+        Collections.sort(arr);
+        int count = 1;
+        int current = arr.get(0);
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr.get(i) != current) {
+                count++;
+                current = arr.get(i);
+            }
+        }
+        return count;
+    }
+
+    public int numUniqueLimited(int[] arr) {
+        boolean[] seen = new boolean[201];
+        for (int num : arr) {
+            seen[num + 100] = true;
+        }
+        int count = 0;
+        for (boolean val : seen) {
+            if (val) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int maxLength(Set<String> arr) {
+        int mx = 0;
+        for (String s : arr) {
+            mx = Math.max(mx, s.length());
+        }
+        return mx;
+    }
+
+    public int contains3(List<String> arr) {
+        Map<String, Integer> counts = new HashMap<String, Integer>();
+        for (String s : arr) {
+            if (counts.containsKey(s)) {
+                counts.put(s, counts.get(s) + 1);
+            } else {
+                counts.put(s, 1);
+            }
+        }
+        int total = 0;
+        for (String s : counts.keySet()) {
+            if (counts.get(s) == 3) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int maxOccurrences(List<String> arr) {
+        if (arr.size() == 0) {
+            return 0;
+        }
+        Map<String, Integer> counts = new HashMap<String, Integer>();
+        for (String s : arr) {
+            if (counts.containsKey(s)) {
+                counts.put(s, counts.get(s) + 1);
+            } else {
+                counts.put(s, 1);
+            }
+        }
+        int bestScore = 0;
+        for (String s : counts.keySet()) {
+            if (counts.get(s) > bestScore) {
+                bestScore = counts.get(s);
+            }
+        }
+        return bestScore;
     }
 
     public static void testGenerics() {
