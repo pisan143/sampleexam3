@@ -228,6 +228,55 @@ public class Exam3 {
         return bestScore;
     }
 
+    public boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int lengthOfLongestSorted(int[] arr) {
+        int mx = 0;
+        int current = 1;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] >= arr[i - 1]) {
+                current++;
+            } else {
+                mx = Math.max(mx, current);
+                current = 1;
+            }
+        }
+        return Math.max(mx, current);
+    }
+
+    public int[] zip(int[] a, int[] b) {
+        int[] result = new int[a.length + b.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (i < a.length && j < b.length) {
+            result[k] = a[i];
+            k++;
+            result[k] = b[j];
+            k++;
+            i++;
+            j++;
+        }
+        while (i < a.length) {
+            result[k] = a[i];
+            k++;
+            i++;
+        }
+        while (j < b.length) {
+            result[k] = b[j];
+            k++;
+            j++;
+        }
+        return result;
+    }
+
     public static void testGenerics() {
         Integer[] t1arr = new Integer[] { 2, 7, 10, 1, 8 };
         // swap(t1arr, 0, 1);
