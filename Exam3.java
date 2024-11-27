@@ -1,7 +1,6 @@
 import java.util.HashSet;
 import java.util.Set;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +8,14 @@ import java.util.HashMap;
 
 public class Exam3 {
 
+    // O(n) time complexity - single loop from 0 to n
     public void white(int n) {
         for (int i = 0; i < n; i++) {
             System.out.println(i * i);
         }
     }
 
+    // O(n^2) time complexity - nested loops from 0 to n
     public void yellow(int n) {
         for (int i = 0; i < n; i++) {
             for (int j = n; j >= 0; j--) {
@@ -23,6 +24,8 @@ public class Exam3 {
         }
     }
 
+    // O(n^2) time complexity - nested loops from 0 to n
+    // The third loop with k is O(1) time complexity
     public void red(int n) {
         for (int i = 0; i < n; i++) {
             for (int j = n; j >= 0; j--) {
@@ -33,6 +36,7 @@ public class Exam3 {
         }
     }
 
+    // O(n^2) time complexity - nested loops from 0 to n
     public void green(int n) {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
@@ -41,6 +45,7 @@ public class Exam3 {
         }
     }
 
+    // O(n) time complexity - 2 x single loop from 0 to n
     public void purple(int[] myArray) {
         int sum = 0;
         int product = 1;
@@ -53,12 +58,15 @@ public class Exam3 {
         System.out.println(sum + " " + product);
     }
 
+    // O(log(n)) time complexity - i is doubled each iteration
+    // The loop runs log(n) times
     public void blue(int n) {
         for (int i = 1; i < n; i *= 2) {
             System.out.println("Hello");
         }
     }
 
+    // O(n) time complexity - single loop from 0 to n
     public int orange(int n) {
         if (n == 0) {
             return 0;
@@ -66,6 +74,7 @@ public class Exam3 {
         return n + orange(n - 1);
     }
 
+    // O(2^n) time complexity - recursive calls for n-1 and n-2
     public int pink(int n) {
         if (n < 2) {
             return n;
@@ -73,6 +82,9 @@ public class Exam3 {
         return pink(n - 1) + pink(n - 2);
     }
 
+    // O(n^2) time complexity - nested loops
+    // Inner loop is O(n) time complexity
+    // Outer loop worst case is called n times
     public void brown(int[] arr) {
         boolean swapped = true;
         while (swapped) {
@@ -88,6 +100,7 @@ public class Exam3 {
         }
     }
 
+    // O(n) time complexity - 3 x single loop from 0 to n
     public int[] black(int[] arr1, int[] arr2) {
         int[] result = new int[arr1.length + arr2.length];
         int i = 0;
