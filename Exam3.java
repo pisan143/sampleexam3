@@ -202,7 +202,7 @@ public class Exam3 {
         return mx;
     }
 
-    public int contains3(List<String> arr) {
+    public boolean contains3(List<String> arr) {
         Map<String, Integer> counts = new HashMap<String, Integer>();
         for (String s : arr) {
             if (counts.containsKey(s)) {
@@ -211,13 +211,12 @@ public class Exam3 {
                 counts.put(s, 1);
             }
         }
-        int total = 0;
         for (String s : counts.keySet()) {
-            if (counts.get(s) == 3) {
-                total++;
+            if (counts.get(s) >= 3) {
+                return true;
             }
         }
-        return total;
+        return false;
     }
 
     public int maxOccurrences(List<String> arr) {
